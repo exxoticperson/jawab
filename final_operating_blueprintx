@@ -1,0 +1,242 @@
+| 6 | **Structured logging** | Google Sheets API: clinic, timestamp, patient number (hashed), language, detected intent, outcome, booking status. Auto-summary formulas. |
+| 7 | **Staff alert system** | WhatsApp message or email to clinic owner on: handoff trigger, new booking, daily summary. Full conversation context forwarded. |
+| 8 | **Error/fallback handling** | Timeout logic, unrecognized input, system downtime fallback message, UptimeRobot integration. |
+| 9 | **Voice-ready architecture** *(scaffold only)* | Vapi/Retell webhook endpoint stub. Call-to-WhatsApp escalation route. Don't build voice logic yet — just the plumbing so it plugs in later. |
+
+### Multi-Tenant from Day 1
+
+Each clinic = a JSON config file:
+```json
+{
+  "clinicId": "clinic_dubai_smile",
+  "name": "Dubai Smile Dental",
+  "phone": "+97144XXXXXX",
+  "hours": { "weekday": "09:00-21:00", "friday": "09:00-12:00", "saturday": "10:00-18:00" },
+  "location": "https://maps.google.com/...",
+  "faq": { "parking": "Free parking in building basement", "insurance": "We accept all major insurance" },
+  "bookingMethod": "cal.com",
+  "calLink": "https://cal.com/dubai-smile/appointment",
+  "alertContacts": [{ "name": "Dr. Ahmed", "whatsapp": "+971...", "email": "..." }],
+  "greeting": "هلا والله! أهلاً فيك في عيادة دبي سمايل",
+  "dialect": "khaleeji"
+}
+```
+Adding a new clinic = adding a new config file. No code changes. No redeployment.
+
+---
+
+## 11 · PILOT SYSTEM
+
+### Structure
+
+| Element | Detail |
+|---------|--------|
+| **Setup** | 500 AED (paid before deployment via Tap payment link) |
+| **Monthly** | 900 AED (first month charged at setup) |
+| **Guarantee** | 14-day money-back: ≥ 5 qualified recovery conversations or full refund |
+| **Scope** | One number, WhatsApp recovery, bilingual, weekly report |
+| **Onboarding** | 30-min call + professional onboarding document sent beforehand |
+
+### Professional Onboarding Document (Send Before Call)
+
+**Create a clean 1-page PDF or Canva document titled:**
+
+**"Your Jawab Setup Guide — جواب"**
+
+Contents:
+1. **What Jawab does** (3 bullet points, bilingual)
+   - يمسك كل مكالمة فايتة ويتواصل مع المريض بالواتساب فوراً
+   - يتكلم عربي وإنجليزي أوتوماتيك
+   - يحجز أو ينقل للفريق حسب الحاجة
+2. **What we need from you** (onboarding checklist — bilingual)
+   - رقم العيادة / Clinic phone number
+   - ساعات العمل / Business hours
+   - الموقع / Location link
+   - جهة التواصل للتنبيهات / Alert contact (WhatsApp + email)
+   - طريقة الحجز المفضلة / Booking preference
+   - أسئلة شائعة / FAQs (parking, insurance, etc.)
+3. **What to expect**
+   - Setup takes 48 hours
+   - You'll receive staff alerts via WhatsApp when a handoff is needed
+   - Weekly report every Sunday showing recovered patients
+4. **Your guarantee**
+   - 14-day money-back guarantee
+   - If Jawab doesn't generate ≥ 5 recovery conversations, full refund
+5. **Contact**: Your name + WhatsApp
+
+**Why this matters:** Clinic owner reviews this at their own pace. When the onboarding call happens, they've already processed the basics. Faster setup, fewer questions, more professional impression.
+
+---
+
+## 12 · PRICING LOGIC
+
+| Decision | Rationale |
+|----------|-----------|
+| **500 AED setup** | Signals professionalism. Filters freebie hunters. Below pain threshold for Gulf clinics. |
+| **900 AED/month** | ≈ $245/mo. One recovered implant consultation = 3-6 months of fees. |
+| **Hard floor: never discount below 500/900** | Gulf dental clinics charge thousands per case. 900/mo is already generous. Discounting signals you don't believe in your product. |
+| **Growth at 1,800 AED** | Natural upsell after 30-60 days. Includes voice. Never mention Day 1. |
+| **Tap for payment** | Frictionless. Send link, clinic pays with card. No wire transfer delays. |
+
+---
+
+## 13 · TOOL-BY-TOOL RULES
+
+### Codex
+**For:** All build work. **Expanded scope:** Multi-tenant scaffold, modular conversation engine, dialect adapter, structured logging, voice-ready architecture stub. Build once, build right.
+
+### Manus (Expires ~7 days)
+**For:** Bulk research, scraping, enrichment, competitor intelligence. **See separate Manus prompt file** for exact agent instructions. Front-load everything to Days 1-3.
+
+### Google Maps / Outscraper
+**For:** Structured lead extraction that continues after Manus expires. **Use Outscraper** (outscraper.com) for instant CSV exports with no code. Free tier = 500 records.
+
+### Twilio / WhatsApp
+**For:** Core production: missed call webhooks + WhatsApp messaging. **Apply for WhatsApp Business API Day 1.** Sandbox for testing while waiting.
+
+### Tap (tap.company)
+**For:** Gulf-native payment collection. **Set up Day 1.** Free account. Generate payment links. Send via WhatsApp after closing.
+
+### Render
+**For:** Backend hosting. Free tier or Starter. Auto-deploy from Git.
+
+### Cal.com
+**For:** Patient booking. Free plan for MVP. Optional — manual booking fallback if clinic prefers.
+
+### Google Sheets
+**For:** Lead tracking, conversation logging, weekly reports. One sheet per clinic. Don't over-engineer.
+
+### ElevenLabs
+**For:** Demo voiceover only. Not production.
+
+---
+
+## 14 · EXECUTION TIMELINE
+
+### TODAY (Day 1)
+
+| # | Task | Time | Tool |
+|---|------|------|------|
+| 1 | Apply for Twilio WhatsApp Business API | 15 min | Twilio |
+| 2 | Set up Tap payment account | 15 min | tap.company |
+| 3 | Launch Manus with full agent prompt (see separate file) | 30 min | Manus |
+| 4 | Run Outscraper: "dental clinic Dubai" + "cosmetic dentist Dubai" + "implant dentist Dubai" | 15 min | Outscraper |
+| 5 | Create lead-tracking Google Sheet | 20 min | Sheets |
+| 6 | Write + practice fast live explanation (Arabic + English) | 15 min | — |
+| 7 | Start Codex: project scaffold + Twilio webhook + WhatsApp reply + multi-tenant config | 1 hr | Codex |
+
+### DAYS 2-3
+
+| # | Task | Tool |
+|---|------|------|
+| 8 | Merge Manus + Outscraper data. Score clinics. Rank top 100 / top 30. | Sheets |
+| 9 | Review/refine personalized angles for top 30 | Manual + AI |
+| 10 | Create onboarding document (PDF/Canva) | Canva |
+| 11 | Record polished demo (60-90s) with Gulf Arabic narration | ElevenLabs + screen recorder |
+| 12 | Send first batch: 10-15 messages to top 30 | Manual |
+| 13 | Codex builds: conversation engine, dialect adapter, Cal.com, Sheets logging | Codex |
+
+### DAYS 4-7
+
+| # | Task | Tool |
+|---|------|------|
+| 14 | Send 10-15 messages/day from top 100 | Manual |
+| 15 | Reply to all responses within 2 hours. Book calls. | Manual |
+| 16 | Codex completes: staff alerts, error handling, voice-ready stubs | Codex |
+| 17 | Deploy on Render. Test your own number (AR Gulf dialect + EN). | Render |
+| 18 | **Day 5 checkpoint:** No pilot conversation? → Escalation protocol. | — |
+
+### DAYS 8-14
+
+| # | Task | Tool |
+|---|------|------|
+| 19 | Close first paid client. Send payment link (Tap). Onboard. | Manual + Tap |
+| 20 | Deploy on their number. Monitor 48 hours. | Twilio + Render |
+| 21 | Daily 1-min update to clinic owner (first 3 days). | WhatsApp |
+| 22 | Continue outreach. Open Sharjah wave. | Manual |
+| 23 | Day 14: Proof asset from pilot data. | Sheets + Canva |
+| 24 | Convert to continued monthly. Close second client. | Manual |
+
+---
+
+## 15 · FAILURE POINTS & PREEMPTIVE FIXES
+
+### Day 5 Escalation Protocol
+
+| Action | Detail |
+|--------|--------|
+| **Increase volume** | 20-30 messages/day |
+| **Tighten ICP** | Cosmetic/implant only |
+| **Simplify pitch** | Pain + credibility + "want to see it?" |
+| **Stop building** | Imperfect product with a client > perfect product with none |
+| **Switch channel** | Instagram DM if WhatsApp isn't getting opens |
+| ~~**Reduce pricing**~~ | ❌ **Do NOT drop below 500/900.** If clinics aren't responding, the problem is messaging, not price. |
+
+### Risk Register
+
+| Risk | Mitigation |
+|------|------------|
+| **WhatsApp API delayed** | Apply Day 1. Sandbox for testing. Pre-recorded demo as backup. |
+| **Low response rate** | Day 5 escalation. Improve personalization. Switch channels. |
+| **Arabic dialect sounds robotic** | Gulf dialect guide in conversation engine. Test with native speakers before pilot. Khaleeji, not MSA. |
+| **Clinic ghosts after agreement** | Payment before deployment via Tap link. Money = commitment. |
+| **System downtime** | UptimeRobot. Fallback SMS: "شكراً لاتصالك — بنرد عليك قريب" |
+| **Founder overbuilds** | If coding Day 3 with 0 messages sent → stop coding. This plan forces commercial before technical. |
+| **Gulf data privacy** | Privacy note in first WhatsApp. Proper policy before scaling past 5 clinics. |
+
+---
+
+## 16 · FINAL RECOMMENDATION
+
+Jawab is a bilingual AI front-desk system — not a WhatsApp bot. Position it that way. Sell the full vision (WhatsApp + voice). Deploy WhatsApp first because it ships in days. Add voice after 3 paying clients prove the model.
+
+Build the backend once, build it right, with multi-tenant architecture so adding a clinic is adding a config file, not touching code. Use Gulf Arabic dialect, not MSA. Use the Jawab name in every pitch — the Arabic wordplay is your strongest creative asset.
+
+Get to first payment within 14 days. Everything else is secondary.
+
+---
+
+## 17 · NON-NEGOTIABLES
+
+1. **WhatsApp API + Tap account: Day 1.**
+2. **Every message personalized.** Generic = blocked.
+3. **Gulf dialect, not MSA.** Khaleeji sounds real. MSA sounds robotic.
+4. **Payment before deployment.** Tap link. No invoicing friction.
+5. **Hard pricing floor: 500 setup / 900 monthly.** No discounts.
+6. **Sell as a dentist.** Your identity is the moat.
+7. **Ship V1 in 6 days.** Multi-tenant, modular, but shipped.
+8. **Outreach starts Day 3.** Even with imperfect assets.
+9. **Day 5 escalation mandatory** if no pilot conversation.
+10. **Use the name.** "كل مكالمة لها جواب" — in every pitch, demo, and follow-up.
+
+---
+
+## 18 · WHAT TO IGNORE
+
+- Dashboards, voice-first, multi-specialty, hiring, company registration
+- Price discounting below floor
+- Social media posting as Day 1 priority
+- Competitors who aren't in the Gulf and don't speak Arabic
+- Your instinct to overbuild — the plan counters it
+- Unnecessary tools: Mac mini, VPS, Claude Max, Claude Code
+
+---
+
+## 19 · IMMEDIATE NEXT MOVE
+
+**Right now. This order.**
+
+1. **Apply for Twilio WhatsApp Business API**
+2. **Set up Tap account** (tap.company)
+3. **Run Outscraper** for "dental clinic Dubai" — instant CSV, free
+4. **Launch Manus** with the full agent prompt (see `manus_agent_prompt.md`)
+5. **Create lead-tracking Google Sheet**
+6. **Write your fast live explanation** in Gulf Arabic + English
+7. **Start Codex build** with multi-tenant scaffold
+
+> [!CAUTION]
+> **Day 3 rule still applies.** If you're coding and haven't sent 10 outreach messages, stop coding. Conversations with real clinic owners are the highest-leverage activity this week.
+
+---
+
+*جواب — كل مكالمة لها جواب* 🦷

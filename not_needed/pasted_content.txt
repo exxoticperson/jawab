@@ -1,0 +1,215 @@
+Your Mission
+You are executing a lead sourcing and market intelligence mission for Jawab — a bilingual Arabic-English AI front-desk system for dental clinics in the Gulf. You must find, enrich, score, and prepare outreach materials for dental clinics across Dubai, Sharjah, and Abu Dhabi.
+
+This is a real business operation. Every data point you collect will be used for direct outreach. Accuracy matters more than speed. Quality matters more than volume.
+
+Task 1: Mass Clinic Sourcing (Target: 300–500 clinics)
+Search Google Maps, Google Business, clinic directories, and any available dental directories for private dental clinics in these cities:
+
+Priority 1: Dubai Priority 2: Sharjah Priority 3: Abu Dhabi
+
+Search queries to use (in both Arabic and English):
+
+"dental clinic Dubai" / "عيادة أسنان دبي"
+"cosmetic dentist Dubai" / "طبيب أسنان تجميل دبي"
+"implant dentist Dubai" / "زراعة أسنان دبي"
+"teeth whitening Dubai" / "تبييض أسنان دبي"
+"orthodontist Dubai" / "تقويم أسنان دبي"
+Repeat for Sharjah and Abu Dhabi
+Also search: "best dental clinic [city]", "dental center [city]"
+Additional sources to check:
+
+Google Maps (primary)
+Yelp UAE / UAE business directories
+Instagram search: #dubaidentist #dubaidental #cosmeticdentistdubai
+Clinic aggregator sites: drfive.com, doctoruna.com, health.ae, whatclinic.com
+LinkedIn (if dental clinic pages visible)
+Data to collect per clinic:
+
+Field	Instructions
+Clinic Name	Full name as appears on Google Maps
+City	Dubai / Sharjah / Abu Dhabi
+Area/District	Specific neighborhood (e.g., JLT, Marina, Deira, Mirdif)
+Phone Number	Primary phone. Include country code (+971...)
+WhatsApp Number	If visible on website or Instagram bio. Often same as phone or separate. Mark "Not visible" if not found.
+Website	Full URL
+Instagram Handle	@handle. Check bio for WhatsApp number.
+Google Rating	e.g., 4.6
+Google Review Count	e.g., 342
+Specialty	Cosmetic / Implant / General / Orthodontic / Pediatric / Multi-specialty
+Owner/Lead Dentist Name	If visible on website or Google listing
+Chain or Independent	Is this a standalone clinic or part of a chain?
+Email	If visible on website or Google listing
+Instagram Follower Count	If easily visible
+Last Instagram Post Date	To gauge activity
+Task 2: Deep Enrichment — Pain Signal Extraction
+For every clinic you source, scan their Google reviews for pain signals — evidence that patients experience problems with:
+
+Not being able to reach the clinic by phone
+Calls not being answered
+No callback
+Long wait times
+Poor front desk experience
+Difficulty booking
+Slow response on WhatsApp or messaging
+After-hours contact issues
+Search Google reviews for keywords (English and Arabic):
+
+"couldn't reach" / "ما قدرت أتواصل"
+"no answer" / "ما حد رد"
+"didn't call back" / "ما اتصلوا"
+"hard to book" / "صعب الحجز"
+"waited long time for response" / "انتظرت وايد"
+"receptionist" / "ريسبشن"
+"phone" / "تلفون"
+"WhatsApp" / "واتساب"
+For each clinic, record:
+
+Pain Signal Found (Yes/No)
+Pain Signal Type (phone/booking/response/front desk)
+Exact Review Quote (copy the specific sentence — in original language)
+Review Star Rating (the individual review, not overall)
+Task 3: ICP Scoring & Ranking
+Score each clinic on a 0–3 scale:
+
+Criteria	Points
+Specialty match (cosmetic, implant, or aesthetic = 1 point)	0 or 1
+Digital presence (has Instagram with posts in last 30 days AND has website = 1 point)	0 or 1
+Pain signal found (at least one review with phone/booking complaint = 1 point)	0 or 1
+Sort the full list by ICP score descending, then by Google review count descending.
+
+Create three output tiers:
+
+Tier A (Top 30): ICP score 3, or ICP score 2 with 100+ Google reviews — these get high-personalization outreach
+Tier B (Next 70): ICP score 2 — these get standard outreach
+Tier C (Remaining): ICP score 0-1 — these are backup pipeline, no immediate outreach
+Task 4: Personalized Outreach Angles (Top 30 Only)
+For each Tier A clinic, create:
+
+4a. Personalized Angle (1 per clinic)
+Write one specific observation that can be used in the opening line of an outreach message. This must reference something real and verifiable about that specific clinic.
+
+Good examples:
+
+"Your Google reviews show patients love your cosmetic work, but several mention difficulty reaching you by phone"
+"Your Instagram shows beautiful implant cases, but I couldn't find a WhatsApp number on your site"
+"I tried calling your number from your Google listing and it rang out after 30 seconds"
+"Your 4.8 rating is excellent, but the 3 most recent 1-star reviews all mention phone issues"
+Bad examples (do NOT write these):
+
+"Your clinic is great" (generic)
+"You might be missing calls" (assumption without evidence)
+"AI can help your clinic" (they don't care about AI)
+4b. Three Message Drafts Per Clinic
+For each Tier A clinic, draft:
+
+1. WhatsApp message (Arabic — Gulf dialect):
+
+د. [الاسم] — [personalized angle بالعربي]. أنا طبيب أسنان وعندي خبرة بخدمة العملاء. بنيت نظام اسمه جواب يمسك كل مكالمة فايتة ويتواصل مع المريض بالواتساب فوراً — عربي وإنجليزي. عندي عرض ٦٠ ثانية. تبي تشوفه؟
+
+2. Instagram DM (English):
+
+Dr. [Name] — [personalized angle]. I'm a dentist who built a system called Jawab that catches every missed call and follows up via WhatsApp — Arabic and English. I have a 60-second walkthrough. Want to see it?
+
+3. Email (English, professional):
+
+Subject: Missed calls at [Clinic Name] Hi Dr. [Name], [personalized angle]. I'm a dentist with customer service experience and I built Jawab — a bilingual WhatsApp system that recovers missed calls for Gulf dental clinics. I have a 60-second walkthrough showing how it works. Would it be useful for me to send it?
+
+Task 5: Competitor Intelligence
+Search for and map every dental AI receptionist, dental chatbot, or dental call-answering service operating in or targeting the Gulf (UAE + Saudi).
+
+Search queries:
+
+"dental AI receptionist UAE"
+"dental chatbot Dubai"
+"AI receptionist dentist"
+"dental phone answering service Gulf"
+"Arini dental"
+"Dentina.ai"
+Any other competitors found
+For each competitor, record:
+
+Field	Detail
+Name	Company/product name
+Website	URL
+Target Market	Which countries/regions?
+Arabic Support	Yes/No/Partial
+WhatsApp Support	Yes/No
+Voice Support	Yes/No
+Pricing	If publicly available
+Key Differentiator	What's their main pitch?
+Gulf Presence	Do they have Gulf-specific clients or content?
+Weakness vs Jawab	What does Jawab do better?
+Output Format
+Deliver everything in one organized Google Sheet (preferred) or structured CSV files with these tabs:
+
+All Clinics — Full list of 300-500 clinics with all data fields from Task 1 + Task 2
+Tier A (Top 30) — Filtered and enriched, with personalized angles and message drafts from Task 4
+Tier B (Next 70) — Filtered, with ICP scores
+Tier C (Remaining) — Backup pipeline
+Competitors — Full competitive landscape from Task 5
+Summary — Key stats: total clinics found per city, per specialty, per ICP tier, number with pain signals, top competitor threats
+Quality Rules
+Every phone number must include +971 country code
+Every Instagram handle must be verified as the correct clinic (not a random match)
+Pain signal quotes must be real, copied directly from reviews, not paraphrased
+Personalized angles must reference something specific and verifiable
+Do not invent data. If a field can't be found, mark it "Not found."
+Prioritize cosmetic and implant clinics. They are the primary ICP.
+Dubai clinics should make up at least 50% of the total list
+What NOT To Do
+❌ Do not write code or build anything
+❌ Do not create mockups or designs
+❌ Do not write marketing content beyond the 3 message drafts per Tier A clinic
+❌ Do not analyze pricing strategy or business models
+❌ Do not generate fake data to fill gaps
+❌ Do not include clinics from outside Dubai, Sharjah, or Abu Dhabi
+❌ Do not include hospital dental departments or university clinics — private clinics only
+Priority
+Start with Dubai. Get at least 200 Dubai clinics before moving to Sharjah and Abu Dhabi. Dubai is the primary market.
+
+Time is critical. This Manus access expires in days. Prioritize getting the raw data out first (Task 1), then enrich (Task 2-3), then personalize (Task 4), then competitors (Task 5). If time runs short, Tasks 1-3 are mandatory. Tasks 4-5 are high-value but can be supplemented manually.
+
+
+Task 6: Reply Classification & Next-Step Engine
+
+After outreach begins, you will be given incoming replies from clinics.
+
+For each reply:
+- classify intent:
+  - Interested
+  - Curious
+  - Neutral
+  - Objection
+  - Not interested
+  - No response (after X time)
+
+Then:
+- suggest the best next reply
+- suggest whether to:
+  - send demo
+  - ask question
+  - move to call
+  - push pilot
+- keep responses short, human, and natural
+
+Do NOT sound like AI.
+Do NOT over-explain.
+Optimize for getting a reply, not closing immediately.
+If a clinic has:
+- strong Instagram activity (recent posts + engagement)
+- AND visible WhatsApp number
+- AND at least 50+ reviews
+
+→ prioritize it higher for outreach even if ICP score is lower.
+For each clinic, determine best contact path:
+- WhatsApp preferred (if number exists)
+- Instagram DM (if active account)
+- Email (fallback only)
+
+Label each clinic with:
+Primary Outreach Channel
+Secondary Channel
+Accuracy matters, but speed is critical.
+Get usable data fast, then improve it.
+Do not stall for perfection.
