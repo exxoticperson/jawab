@@ -1,0 +1,19 @@
+[
+  {
+    "clinicId": "demo_clinic",
+    "name": "Jawab Demo Dental",
+    "phone": "+971501234567",
+    "twilioNumber": "+14155238886",
+    "hours": { "weekday": "09:00-21:00", "friday": "Closed", "saturday": "10:00-18:00" },
+    "currency": "AED",
+    "faq": {
+      "parking": "Free parking available in the basement.",
+      "insurance": "We accept major insurance including Daman, Thiqa, and Nextcare."
+    },
+    "bookingMethod": "cal.com",
+    "bookingLink": "https://cal.com/awab/15min",
+    "alertWhatsApp": "+971500000000",
+    "greetingKhaleeji": "هلا والله! لاحظنا اتصالكم. شلون أقدر أساعدكم بحجز موعد؟",
+    "greetingEnglish": "Hi there! We noticed we missed your call. How can I help you book an appointment?"
+  }
+]
